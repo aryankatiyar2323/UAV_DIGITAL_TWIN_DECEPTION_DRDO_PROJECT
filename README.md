@@ -38,7 +38,7 @@ This project is intentionally simulation-only. It does not connect to flight con
 ### Digital Twin Comparison & Telemetry
 
 <p align="center">
-  <img src="screenshots/twin_comparison.png" alt="Trusted and Decoy Twin Comparison with Telemetry History" width="75%">
+  <img src="screenshots/twin_comparision.png" alt="Trusted and Decoy Twin Comparison with Telemetry History" width="75%">
 </p>
 
 ### Deception Profiles & Audit Trail
