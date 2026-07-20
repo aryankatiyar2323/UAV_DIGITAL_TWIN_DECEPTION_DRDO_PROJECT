@@ -27,6 +27,28 @@ This project is intentionally simulation-only. It does not connect to flight con
 - Scenario event log
 - MongoDB storage when `MONGODB_URI` is configured
 
+## 📸 Project Screenshots
+
+### Dashboard Overview
+
+<p align="center">
+  <img src="screenshots/dashboard-overview.png" alt="UAV Digital Twin Dashboard Overview" width="100%">
+</p>
+
+### Digital Twin Comparison & Telemetry
+
+<p align="center">
+  <img src="screenshots/twin-comparison.png" alt="Trusted and Decoy Twin Comparison with Telemetry History" width="75%">
+</p>
+
+### Deception Profiles & Audit Trail
+
+<p align="center">
+  <img src="screenshots/deception-profiles.png" alt="UAV Deception Profiles" width="42%">
+  &nbsp;&nbsp;
+  <img src="screenshots/audit-trail.png" alt="Scenario Audit Trail" width="42%">
+</p>
+
 ## Run Locally
 
 Install everything:
