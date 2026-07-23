@@ -49,6 +49,10 @@ This project is intentionally simulation-only. It does not connect to flight con
   <img src="screenshots/audit_trail.png" alt="Scenario Audit Trail" width="42%">
 </p>
 
+<a href="https://uav-digital-twin-deception-drdo-pro.vercel.app/" target="_blank">
+  <strong>🚀 View Live Demo</strong>
+</a>
+
 ## Run Locally
 
 Install everything:
