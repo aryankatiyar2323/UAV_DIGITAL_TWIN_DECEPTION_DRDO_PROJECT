@@ -86,6 +86,30 @@ button {
   outline-offset: 2px;
 }
 
+/* interaction defaults — every clickable surface gets a consistent,
+   understated response to hover, focus and press */
+button,
+.status-pill,
+.icon-button,
+.scenario-option,
+.metric-card,
+.twin-panel,
+.tag-list span,
+.event-item {
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease,
+    box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.icon-button:active,
+.scenario-option:active,
+.metric-card:active,
+.twin-panel:active,
+.event-item:active,
+.status-pill:active {
+  transform: scale(0.97);
+  transition-duration: 0.08s;
+}
+
 /* ============================================================
    Shell
    ============================================================ */
@@ -166,6 +190,11 @@ button {
   text-transform: uppercase;
 }
 
+.status-pill:hover {
+  border-color: var(--trusted);
+  box-shadow: 0 0 0 1px var(--trusted) inset;
+}
+
 .icon-button {
   display: inline-grid;
   width: 38px;
@@ -219,6 +248,18 @@ button {
   background: var(--panel);
 }
 
+.metric-card:hover {
+  border-color: var(--hairline-strong);
+  background: var(--panel-2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.metric-card.warning:hover,
+.metric-card.critical:hover {
+  border-color: rgba(255, 125, 61, 0.4);
+}
+
 .metric-card p {
   margin: 0 0 6px;
   color: var(--text-mid);
@@ -247,6 +288,16 @@ button {
   border-radius: var(--radius);
   background: var(--trusted-dim);
   color: var(--trusted);
+  transition: box-shadow 0.15s ease;
+}
+
+.metric-card:hover .metric-icon {
+  box-shadow: 0 0 0 1px var(--trusted) inset, 0 0 14px rgba(53, 230, 196, 0.35);
+}
+
+.metric-card.warning:hover .metric-icon,
+.metric-card.critical:hover .metric-icon {
+  box-shadow: 0 0 0 1px var(--decoy) inset, 0 0 14px rgba(255, 125, 61, 0.35);
 }
 
 .metric-card.warning .metric-icon,
@@ -313,24 +364,46 @@ button {
 }
 
 .scenario-option {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   min-height: 68px;
   width: 100%;
-  padding: 12px;
+  padding: 12px 12px 12px 16px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius);
   background: var(--panel-2);
   color: var(--text-hi);
   text-align: left;
-  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.scenario-option::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 2px;
+  background: var(--trusted);
+  transform: scaleY(0);
+  transition: transform 0.15s ease;
+  transform-origin: center;
+}
+
+.scenario-option:hover::before,
+.scenario-option.active::before {
+  transform: scaleY(1);
 }
 
 .scenario-option.active {
   border-color: var(--trusted);
   background: var(--trusted-dim);
+}
+
+.scenario-option:hover {
+  background: var(--panel);
 }
 
 .scenario-option strong,
@@ -445,6 +518,12 @@ button {
   width: 14px;
   height: 14px;
   border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.track:hover {
+  transform: scale(1.35);
 }
 
 .trusted-track {
@@ -474,9 +553,25 @@ button {
   background: var(--panel-2);
 }
 
+.twin-panel:hover {
+  border-color: var(--trusted);
+}
+
 .twin-panel.decoy {
   border-color: rgba(255, 125, 61, 0.35);
   background: var(--decoy-dim);
+}
+
+.twin-panel.decoy:hover {
+  border-color: var(--decoy);
+}
+
+.twin-fields div {
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.twin-panel:hover .twin-fields div {
+  border-color: var(--hairline-strong);
 }
 
 .twin-heading {
@@ -636,6 +731,12 @@ button {
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  cursor: default;
+}
+
+.tag-list span:hover {
+  border-color: var(--trusted);
+  color: var(--trusted);
 }
 
 .event-list {
@@ -644,6 +745,21 @@ button {
   gap: 8px;
   overflow: auto;
   padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline-strong) transparent;
+}
+
+.event-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.event-list::-webkit-scrollbar-thumb {
+  background: var(--hairline-strong);
+  border-radius: 3px;
+}
+
+.event-list::-webkit-scrollbar-thumb:hover {
+  background: var(--trusted);
 }
 
 .event-item {
@@ -652,6 +768,12 @@ button {
   border-left: 3px solid var(--trusted);
   border-radius: var(--radius);
   background: var(--panel-2);
+}
+
+.event-item:hover {
+  border-color: var(--hairline-strong);
+  background: var(--panel);
+  transform: translateX(2px);
 }
 
 .event-item.warning {
